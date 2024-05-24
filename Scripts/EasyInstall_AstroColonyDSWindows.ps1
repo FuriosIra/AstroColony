@@ -274,7 +274,8 @@ Switch ($decision)
 		
 		Set-Location $defaultServerlocation
 		
-		Set-Content"$defaultServerLocation\AstroColonyServer.exe -QueryPort=$serverqueryPort -SteamServerName=\"$serverName\" -log" -path StartACserver.cmd	 
+        $content = "$defaultServerLocation\AstroColonyServer.exe -QueryPort=$serverqueryPort -SteamServerName=" + '"' + $serverName + '"' + " -log"
+		Set-Content -value $content -path StartACserver.cmd	 
     }
     2  #backup
     {
