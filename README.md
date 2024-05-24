@@ -7,7 +7,7 @@ In this repository, I'm going to add my various developments for Astro Colony.
 This could be anything from a script to install the dedicated Windows/Lunix server to the little modes I might make.
 
 > [!WARNING]
-> Disclaimer.
+> ### Disclaimer.  
 > Please note that the files (scripts, tools and mods) contained in this Git repository cannot be affiliated with **Terad Games** and its developer **Tefel**.  
 > Consequently, all requests for support on **official Tefel channels** concerning any of the file types in this Git repository will result in a refusal of assistance.  
 > Only the maintainer of this repository (i.e. me, **FuriosIra**) and contributors like **Marquisian**, will be able to provide support for the available content, if members of the **Astro colony community** want to help, please note that they are not affiliated with any of the parties and would do so on a voluntary basis.  
