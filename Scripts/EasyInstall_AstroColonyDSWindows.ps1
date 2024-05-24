@@ -257,26 +257,24 @@ Switch ($decision)
 		write-host "Is everything as you want it ? Press enter to continue"
 		$installserver = read-host
 		
-       <#  $serversettings = /serverfiles/AstroColony/Saved/Config
-        $serversettingsIniFile = $serversettings + "\serversettings.ini"
-		set-content -Value "[/Script/AstroColony.EHServerSubsystem]" -path $ServerSettingsIniFile
-		add-content -Value "ServerPassword=$serverPassword" -path $ServerSettingsIniFile
-		add-content -Value "MapName=$serverMapName" -path $ServerSettingsIniFile
-		add-content -Value "Seed=$serverSeed" -path $ServerSettingsIniFile
-		add-content -Value "MaxPlayers=$serverMaxPlayers" -path $ServerSettingsIniFile
+        $serversettings = $defaultServerlocation + "\AstroColony\Saved\Config\WindowsServer\ServerSettings.ini"
+       
+		set-content -Value "[/Script/AstroColony.EHServerSubsystem]" -path $ServerSettings
+		add-content -Value "ServerPassword=$serverPassword" -path $ServerSettings
+		add-content -Value "MapName=$serverMapName" -path $ServerSettings
+		add-content -Value "Seed=$serverSeed" -path $ServerSettings
+		add-content -Value "MaxPlayers=$serverMaxPlayers" -path $ServerSettings
 		#add-content -Value "ShouldLoadLatestSavegame=True" -path $ServerSettingsIniFile
-		add-content -Value "AdminList=$serverAdminList" -path $ServerSettingsIniFile
-		add-content -Value "SharedTechnologies=True" -path $ServerSettingsIniFile
-		add-content -Value "OxygenConsumption=True" -path $ServerSettingsIniFile
-		add-content -Value "FreeConstruction=False" -path $ServerSettingsIniFile
-		add-content -Value "AutosaveInterval=5.0" -path $ServerSettingsIniFile
-		add-content -Value "AutosavesCount=10" -path $ServerSettingsIniFile
+		add-content -Value "AdminList=$serverAdminList" -path $ServerSettings
+		add-content -Value "SharedTechnologies=True" -path $ServerSettings
+		add-content -Value "OxygenConsumption=True" -path $ServerSettings
+		add-content -Value "FreeConstruction=False" -path $ServerSettings
+		add-content -Value "AutosaveInterval=5.0" -path $ServerSettings
+		add-content -Value "AutosavesCount=10" -path $ServerSettings
 		
-		cd ~/serverfiles
+		Set-Location $defaultServerlocation
 		
-		Set-Content"./AstroColonyServer.exe -QueryPort=$serverqueryPort -SteamServerName=\"${serverName}\" -log" -path StartACserver.cmd
-		 #>
-	
+		Set-Content"$defaultServerLocation\AstroColonyServer.exe -QueryPort=$serverqueryPort -SteamServerName=\"$serverName\" -log" -path StartACserver.cmd	 
     }
     2  #backup
     {
@@ -284,8 +282,10 @@ Switch ($decision)
     }
     3  #Update
     {
-        $appcommand =  "$steamcmdpath)" + "\steamcmd.exe"            
-        $appArguments = "+login anonymous +app_update 2662210 +@sSteamCmdForcePlatformType windows validate +quit"
+        $appcommand =  "$steamcmdLocation" + "\steamcmd.exe"            
+        write-host "Starting $appcommand"
+        $appArguments = "+force_install_dir $defaultServerLocation +login anonymous +app_update 2662210 validate +@sSteamCmdForcePlatformType windows +quit"
+        write-host "With Arguments: $apparguments"
         $proc = Start-Process -filepath $appcommand -argumentlist $apparguments -PassThru -nonewwindow -Wait 
         $Exitcode = $proc.ExitCode
         Write-host "Exitcode was $($exitcode)"
