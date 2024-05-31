@@ -1,3 +1,5 @@
+# Please read the information in this ReadMe carefully before use.
+  
 # Operating systems compatibility  
 ## Linux :penguin:  
 The quick installation script for Linux systems has been tested on the following systems :  
@@ -26,6 +28,19 @@ To exit the `screen` window without closing the process, hold down CTRL and pres
 ## Setup procedure for Windows 
 Currently being written. 
   
+> [!TIP]
+> Information for the network part.
+> Please note that direct connection is not possible, and that it is necessary to use `Steam` relays and search for the dedicated server from within the game.
+> By default, the dedicated server uses ports \(-Port=) `7777` et \(-QueryPort=) `27015` in UDP, but `QueryPort` is sufficient.
+> If your dedicated server is on the same network as your game machine, I recommend using a different port number, e.g. `27050` or one of your choice, to avoid conflicts with the ports used by the Steam client.
+> Once you've chosen the port number, you'll need to go to your modem/router's administration interface, in the NAT or equivalent section, to open the corresponding port to the IP address hosting the dedicated server.
+> 
+> If you get kicked by the server when you join, try restarting it.
+> If this doesn't fix it, your client and the server does not have the same version - verify which one you need to update (most likely the server) and update it.
+> 
+> In rare situations, if you have advanced network security (e.g. PFsense/OPNsense firewall), it may be necessary to open one or all of the following ports: `3478` `4379` `4380`.
+> For example, if you see your server in the in-game list, and when you log in, you're ejected.
+
 # To-do list
 - [x] :memo: Writing of a user guide for Linux systems.   
 - [ ] :toolbox: Added verification that the linux script is executed outside the Root account.  
