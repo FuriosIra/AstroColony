@@ -169,7 +169,7 @@ case $MENU in
 		read installServer
 		
 		mkdir -p ~/serverfiles/AstroColony/Saved/Config/LinuxServer && cd ~/serverfiles/AstroColony/Saved/Config/LinuxServer
-		echo "[/Script/AstroColony.EHServerSubsystem]" >> ServerSettings.ini
+		echo "[/Script/ACFeature.EHServerSubsystem]" >> ServerSettings.ini
 		echo "ServerPassword=${serverPassword}" >> ServerSettings.ini
 		echo "MapName=${serverMapName}" >> ServerSettings.ini
 		echo "Seed=${serverSeed}" >> ServerSettings.ini
@@ -180,6 +180,7 @@ case $MENU in
 		echo "SharedTechnologies=True" >> ServerSettings.ini
 		echo "OxygenConsumption=True" >> ServerSettings.ini
 		echo "FreeConstruction=False" >> ServerSettings.ini
+		echo "Sandbox=True" >> ServerSettings.ini
 		echo "AutosaveInterval=5.0" >> ServerSettings.ini
 		echo "AutosavesCount=10" >> ServerSettings.ini
 		
